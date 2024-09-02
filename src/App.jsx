@@ -23,6 +23,16 @@ const SubjectListPage = lazy(() => import('./pages/admin/subject/SubjectListPage
 const SubjectDetailPage = lazy(() => import('./pages/admin/subject/SubjectDetailPage'));
 const SubjectCreatePage = lazy(() => import('./pages/admin/subject/SubjectCreatePage'));
 const SubjectUpdatePage = lazy(() => import('./pages/admin/subject/SubjectUpdatePage'));
+// Teacher Page
+const TeacherListPage = lazy(() => import('./pages/admin/teacher/TeacherListPage'));
+const TeacherDetailPage = lazy(() => import('./pages/admin/teacher/TeacherDetailPage'));
+const TeacherCreatePage = lazy(() => import('./pages/admin/teacher/TeacherCreatePage'));
+const TeacherUpdatePage = lazy(() => import('./pages/admin/teacher/TeacherUpdatePage'));
+// Class Period Page
+const ClassPeriodListPage = lazy(() => import('./pages/admin/classPeriod/ClassPeriodListPage'));
+const ClassPeriodDetailPage = lazy(() => import('./pages/admin/classPeriod/ClassPeriodDetailPage'));
+const ClassPeriodCreatePage = lazy(() => import('./pages/admin/classPeriod/ClassPeriodCreatePage'));
+const ClassPeriodUpdatePage = lazy(() => import('./pages/admin/classPeriod/ClassPeriodUpdatePage'));
 
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
@@ -52,13 +62,30 @@ const AppRoutes = () => (
           <Route path="update/:id" element={<StudentUpdatePage />} />
         </Route>
 
-        {/* Subject */}
+        {/* Subject Routes*/}
         <Route path="/subject">
           <Route path=''  element={<SubjectListPage />}/>
           <Route path=":id" element={<SubjectDetailPage />} /> 
           <Route path="create" element={<SubjectCreatePage />} /> 
           <Route path="update/:id" element={<SubjectUpdatePage />} />
         </Route>
+
+        {/* Teacher Routes*/}
+        <Route path="/teacher">
+          <Route path=''  element={<TeacherListPage />}/>
+          <Route path=":id" element={<TeacherDetailPage />} /> 
+          <Route path="create" element={<TeacherCreatePage />} /> 
+          <Route path="update/:id" element={<TeacherUpdatePage />} />
+        </Route>
+
+        {/* Class Period Routes */}
+        <Route path="/classPeriod">
+          <Route path=''  element={<ClassPeriodListPage />}/>
+          <Route path=":id" element={<ClassPeriodDetailPage />} /> 
+          <Route path="create" element={<ClassPeriodCreatePage />} /> 
+          <Route path="update/:id" element={<ClassPeriodUpdatePage />} />
+        </Route>
+
       {/* </Route> */}
 
       <Route path="*" element={<NotFoundPage />} />
