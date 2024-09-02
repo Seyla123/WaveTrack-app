@@ -36,7 +36,7 @@ const ClassPeriodUpdatePage = lazy(() => import('./pages/admin/classPeriod/Class
 
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
-const AppRoutes = () => (
+const App = () => (
   <Suspense fallback={<div>Loading...</div>}>
     <Routes>
       <Route path="/login" element={<LoginPage />} />
@@ -93,4 +93,4 @@ const AppRoutes = () => (
   </Suspense>
 );
 
-export default AppRoutes;
+export default App;
