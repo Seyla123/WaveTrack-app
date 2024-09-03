@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route,Link } from 'react-router-dom';
 import ProtectedRoutes from './routes/ProtectedRoutes';
 
 // Authentication Pages
@@ -23,6 +23,12 @@ const SubjectListPage = lazy(() => import('./pages/admin/subject/SubjectListPage
 const SubjectDetailPage = lazy(() => import('./pages/admin/subject/SubjectDetailPage'));
 const SubjectCreatePage = lazy(() => import('./pages/admin/subject/SubjectCreatePage'));
 const SubjectUpdatePage = lazy(() => import('./pages/admin/subject/SubjectUpdatePage'));
+
+// Class Page
+const ClassListPage = lazy(() => import('./pages/admin/class/ClassListPage'));
+const ClassDetailPage = lazy(() => import('./pages/admin/Class/ClassDetailPage'));
+const ClassCreatePage = lazy(() => import('./pages/admin/Class/ClassCreatePage'));
+const ClassUpdatePage = lazy(() => import('./pages/admin/Class/ClassUpdatePage'));
 
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
@@ -59,10 +65,21 @@ const AppRoutes = () => (
           <Route path="create" element={<SubjectCreatePage />} /> 
           <Route path="update/:id" element={<SubjectUpdatePage />} />
         </Route>
+
+        {/* Class */}
+        <Route path="/class">
+          <Route path=''  element={<ClassListPage />}/>
+          <Route path=":id" element={<ClassDetailPage />} /> 
+          <Route path="create" element={<ClassCreatePage />} /> 
+          <Route path="update/:id" element={<ClassUpdatePage />} />
+        </Route>
+
       {/* </Route> */}
 
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
+    <Link to='class'> ClassListPage</Link>
+
   </Suspense>
 );
 
