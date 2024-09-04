@@ -147,12 +147,25 @@ function SessionListPage() {
 
   const paginationModel = { page: 0, pageSize: 10 };
 
+  const content = { 
+    maxWidth: 1200, 
+    mx: "auto", 
+    py: {
+      xs: "24px",
+      md: "32px"
+    },  
+    px: {
+      xs : "24px",
+      md : "32px"
+    },
+    bgcolor: "#F9FAFB"}
+
   return (
-    <Box sx={{ maxWidth: 1200, mx: "auto", py: "32px", px: "32px", bgcolor: "#F9FAFB"}}>
+    <Box sx={content}>
       {/* head */}
       <Box sx={{ my: "16px" }}>
         <Box sx={{ my: "24px" }}>
-          <Typography sx={{ fontSize: "32px", fontWeight: "semibold" }}>
+          <Typography sx={{ fontSize:  "32px", fontWeight: "semibold" }}>
             SESSION LIST
           </Typography>
           <Typography sx={{ fontSize: "16px", color: "#666666" }}>
@@ -168,7 +181,7 @@ function SessionListPage() {
             my: "24px"
           }}
         >
-          <Button variant="contained" sx={{ width: "170px" }}>
+          <Button variant="contained" sx={{width : "170px"}}>
             ADD SESSION
           </Button>
         </Stack>

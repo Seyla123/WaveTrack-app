@@ -103,21 +103,24 @@ function SessionCreatePage() {
     },
   ];
 
-const content = {
-  maxWidth: 1200,
-   mx: "auto", 
-   my: "32px",
-   px: {
-    xs : "24px", 
-    md : "32px"
-   }
-}
+  const content = {
+    maxWidth: 1200,
+    mx: "auto",
+    my: "16px",
+    px: {
+      xs: "24px",
+      md: "32px",
+    },
+    display: "flex",
+    flexDirection: "column",
+    gap: "16px",
+  };
 
   const form = {
     maxWidth: "1064px",
-    padding: {
-      xs : "24px", 
-      md : "32px"
+    p: {
+      xs: "24px",
+      md: "32px",
     },
     border: "1px solid #eee",
     borderRadius: "8px",
@@ -130,14 +133,19 @@ const content = {
     "& .MuiTextField-root": { m: 1, width: 1 },
     width: "100%",
     display: "grid",
-    gap: 2 , 
+    gap: "24px",
     gridTemplateColumns: {
       xs: "repeat(1, 1fr)",
-      md: "repeat(2, 1fr)"
-    }, 
+      md: "repeat(2, 1fr)",
+    },
   };
 
-  const textInput = { width: 1 };
+  const textInput = {
+    width: 1,
+    display: "flex ",
+    flexDirection: "column",
+    gap: "4px",
+  };
 
   const buttonContainer = {
     display: "flex",
@@ -148,16 +156,15 @@ const content = {
   };
 
   const button = {
-     width: {
-      md : "170px" ,
-      xs : "100%"
-     } , 
-     
-  }
+    width: {
+      md: "170px",
+      xs: "100%",
+    },
+  };
   return (
     <Box sx={content}>
       {/* Header */}
-      <Box sx={{ maxWidth: 1064, my: "32px" }}>
+      <Box sx={{ maxWidth: 1064 }}>
         <Typography sx={{ fontSize: "32px", fontWeight: "semibold" }}>
           ADD SESSION
         </Typography>
@@ -171,8 +178,8 @@ const content = {
         <Typography sx={{ fontSize: "18px", fontWeight: "bold" }}>
           Session Information
         </Typography>
-        <Divider sx={{ my: "16px" }} />
-        <Box component="form" sx={container} noValidate autoComplete="off" >
+        <Divider />
+        <Box component="form" sx={container} noValidate autoComplete="off">
           {/* Teacher */}
           <Box sx={textInput}>
             <Typography sx={{ fontSize: "16px" }}>Teacher</Typography>
@@ -190,9 +197,7 @@ const content = {
           </Box>
           {/* Period */}
           <Box sx={textInput}>
-            <Typography sx={{ fontSize: "16px"}}>
-              Class Period
-            </Typography>
+            <Typography sx={{ fontSize: "16px" }}>Class Period</Typography>
             <TextField
               id="outlined-select-currency"
               select
