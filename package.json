@@ -5,7 +5,6 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "server": "json-server --port 3000 --watch db.json --host 127.0.0.1",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -14,11 +13,9 @@
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@mui/material": "^6.0.1",
-    "@mui/styled-engine-sc": "^6.0.1",
+    "@mui/x-data-grid": "^7.15.0",
     "@reduxjs/toolkit": "^2.2.7",
     "axios": "^1.7.7",
-    "cors": "^2.8.5",
-    "json-server": "^1.0.0-beta.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-redux": "^9.1.2",
