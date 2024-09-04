@@ -134,6 +134,7 @@ function SessionCreatePage() {
     width: "100%",
     display: "grid",
     gap: "24px",
+    margin: "0 auto",
     gridTemplateColumns: {
       xs: "repeat(1, 1fr)",
       md: "repeat(2, 1fr)",
@@ -165,9 +166,7 @@ function SessionCreatePage() {
     <Box sx={content}>
       {/* Header */}
       <Box sx={{ maxWidth: 1064 }}>
-        <Typography sx={{ fontSize: "32px", fontWeight: "semibold" }}>
-          ADD SESSION
-        </Typography>
+        <Typography variant="h4">ADD SESSION</Typography>
         <Typography sx={{ color: "#666666", fontSize: "16px" }}>
           Please Fill Session information
         </Typography>
@@ -253,17 +252,17 @@ function SessionCreatePage() {
               ))}
             </TextField>
           </Box>
-        </Box>
 
-        {/* Button  */}
-        <Stack sx={buttonContainer}>
-          <Button variant="outlined" sx={button} color="white">
-            Cancel
-          </Button>
-          <Button variant="contained" sx={button}>
-            Create
-          </Button>
-        </Stack>
+          {/* Button  */}
+          <Stack sx={buttonContainer}>
+            <Button variant="outlined" sx={button} color="white">
+              Cancel
+            </Button>
+            <Button variant="contained" sx={button}>
+              ADD SESSION
+            </Button>
+          </Stack>
+        </Box>
       </Box>
     </Box>
   );
