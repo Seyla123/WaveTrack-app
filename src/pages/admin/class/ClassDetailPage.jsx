@@ -58,6 +58,12 @@ const ClassDetailPage = () => {
     handleMenuClose();
   };
 
+  //Hadle to Update Class
+    const handleUpdateClass = () => {
+    navigate(`/class/update/${selectedPostId}`, { state: { posts } });
+    handleMenuClose();
+  };
+
   //Handle Delete
   const handleDelete = async (selectedPostId) => {
     try {
@@ -234,7 +240,7 @@ const ClassDetailPage = () => {
             Class Information
           </Typography>
           <Box>
-            <EditIcon sx={{ mr: 1, color: "blue" }} />
+            <EditIcon sx={{ mr: 1, color: "blue" }} onClick={handleUpdateClass} />
             <DeleteIcon sx={{ color: "red" }} />
           </Box>
         </Box>
@@ -281,7 +287,7 @@ const ClassDetailPage = () => {
       </Box>
 
       <Box sx={{ backgroundColor: "#FFFFFF", padding: "32px" }}>
-        <Typography
+        <Typography variant="h6" gutterBottom
           sx={{ fontFamily: "Roboto", fontSize: "16px", marginBottom: "24px" }}
         >
           Total 40 Student
