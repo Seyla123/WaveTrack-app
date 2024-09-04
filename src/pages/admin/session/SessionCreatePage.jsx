@@ -118,7 +118,10 @@ function SessionCreatePage() {
     width: "100%",
     display: "grid",
     gap: 2 , 
-    gridTemplateColumns: 'repeat(2, 1fr)', 
+    gridTemplateColumns: {
+      xs: "repeat(1, 1fr)",
+      md: "repeat(2, 1fr)"
+    }, 
   };
 
   const textInput = { width: 1 };
@@ -214,7 +217,7 @@ function SessionCreatePage() {
           </Box>
 
           {/* Dow */}
-          <Box sx={{ maxWidth: "524px" }}>
+          <Box sx={textInput}>
             <Typography sx={{ fontSize: "16px" }}>Day of Week</Typography>
             <TextField id="outlined-select-currency" select defaultValue="mon">
               {dow.map((option) => (
