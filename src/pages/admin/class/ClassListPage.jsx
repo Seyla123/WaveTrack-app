@@ -5,11 +5,11 @@ import {
   Button,
   Box,
   Paper,
-  Checkbox,
   Menu,
   MenuItem,
   IconButton,
   Typography,
+  Hidden,
 } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { useNavigate } from "react-router-dom";
@@ -21,10 +21,11 @@ const ClassListPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
+  // Fetch Data
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get(`http://localhost:3003/api/v1/posts`);
+        const response = await axios.get(`http://localhost:3001/api/v1/posts`);
         setPosts(response.data);
       } catch (err) {
         console.log(`Error fetching posts: ${err}`);
@@ -34,33 +35,39 @@ const ClassListPage = () => {
     fetchPosts();
   }, []);
 
+  //Navigate to create page
   const handleCreate = () => {
     navigate(`/class/create`);
   };
 
+  //Click to View Detail
   const handleTitleClick = (postId) => {
     navigate(`/class/${postId}`);
   };
 
+  //Click to Drop Menu Click
   const handleMenuClick = (event, postId) => {
     setMenuClick(event.currentTarget);
     setSelectedPostId(postId);
   };
 
+  //Handle Menu Close
   const handleMenuClose = () => {
     setMenuClick(null);
     setSelectedPostId(null);
   };
 
+  //navigate to Update Page
   const handleUpdate = () => {
     navigate(`/class/update/${selectedPostId}`, { state: { posts } });
     handleMenuClose();
   };
 
+  //Handle Delete
   const handleDelete = async (selectedPostId) => {
     try {
       await axios.delete(
-        `http://localhost:3003/api/v1/posts/${selectedPostId}`
+        `http://localhost:3001/api/v1/posts/${selectedPostId}`
       );
       setPosts(posts.filter((post) => post.id !== selectedPostId));
       console.log(`Deleted post with id: ${selectedPostId}`);
@@ -70,16 +77,21 @@ const ClassListPage = () => {
     handleMenuClose();
   };
 
+  //Filter using for searching post even if lower or upper case
   const filteredPosts = posts.filter(
     (post) =>
       post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       post.content.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // Const Column for using with DataGrid
   const columns = [
     {
       field: "title",
       headerName: "Class ID",
+      disableColumnMenu: true,
+      sortable: false,
+      resizable: false,
       width: 270,
       minWidth: 50,
       headerAlign: "center", // Center align the header text
@@ -96,6 +108,9 @@ const ClassListPage = () => {
     {
       field: "content",
       headerName: "Class Name",
+      disableColumnMenu: true,
+      sortable: false,
+      resizable: false,
       width: 300,
       headerAlign: "center", // Center align the header text
       align: "center",
@@ -103,17 +118,23 @@ const ClassListPage = () => {
     {
       field: "description",
       headerName: "Description",
+      disableColumnMenu: true,
+      sortable: false,
+      resizable: false,
       width: 365,
-      headerAlign: "center", // Center align the header text
+      headerAlign: "center",
       align: "center",
     },
     {
       field: "action",
       headerName: "Action",
-      headerAlign: "center", // Center align the header text
+      disableColumnMenu: true,
+      sortable: false,
+      resizable: false,
+      headerAlign: "center",
       align: "center",
       renderCell: (params) => (
-        <div>
+        <Box sx={{ boxShadow: "none" }}>
           <IconButton
             onMouseEnter={(event) => handleMenuClick(event, params.row.id)}
           >
@@ -125,28 +146,29 @@ const ClassListPage = () => {
             onClose={handleMenuClose}
           >
             <MenuItem onClick={() => handleUpdate(params.row.id)}>
-              Update
+              Edit
             </MenuItem>
             <MenuItem onClick={() => handleDelete(params.row.id)}>
               Delete
             </MenuItem>
           </Menu>
-        </div>
+        </Box>
       ),
-      width: 150,
+      width: 195,
     },
   ];
 
-  //Add Style 
+  //Add Style
 
   const containerStyles = {
     width: "Auto",
-    maxWidth: "1139px",
+    maxWidth: "lg",
     minWidth: "300px",
     margin: "0 auto",
     padding: "32px",
     alignItems: "end",
     flexWrap: "wrap",
+    backgroundColor: "#F9FAFB",
   };
   const flexBoxStyles = {
     display: "flex",
@@ -171,6 +193,7 @@ const ClassListPage = () => {
   const tableContainerStyles = {
     width: "100%",
     overflowX: "auto",
+    backgroundColor: "#FFFFFF",
   };
 
   const paginationModel = { page: 0, pageSize: 5 };
@@ -181,7 +204,9 @@ const ClassListPage = () => {
         CLASS LISTS
       </Typography>
       <Box sx={flexBoxStyles}>
-        <Typography sx={{fontFamily:'Roboto',fontSize:'16px'}}>There are total classes</Typography>
+        <Typography sx={{ fontFamily: "Roboto", fontSize: "16px" }}>
+          There are total classes
+        </Typography>
         <Button
           onClick={handleCreate}
           sx={{ backgroundColor: "#1976d2", color: "#fff" }}
@@ -189,6 +214,7 @@ const ClassListPage = () => {
           ADD CLASS
         </Button>
       </Box>
+
       <Box sx={inputBoxStyles}>
         <TextField
           label="Search Classes"
@@ -198,8 +224,11 @@ const ClassListPage = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
           sx={textFieldStyles}
         />
-        <Button sx={{ height: 56 }}>Search</Button>
+        <Hidden smDown>
+          <Button sx={{ height: 56 }}>Search</Button>
+        </Hidden>
       </Box>
+
       <Paper sx={tableContainerStyles}>
         <DataGrid
           rows={filteredPosts}
@@ -208,6 +237,7 @@ const ClassListPage = () => {
           pageSizeOptions={[5, 10, 15]}
           checkboxSelection
           sx={{ border: 0 }}
+          disableRowSelectionOnClick
         />
       </Paper>
     </Box>

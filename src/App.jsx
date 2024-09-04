@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import { Routes, Route,Link } from 'react-router-dom';
 import ProtectedRoutes from './routes/ProtectedRoutes';
+import theme from './styles/theme';
 
 // Authentication Pages
 const LoginPage = lazy(() => import('./pages/auth/login/LoginPage'));
@@ -78,7 +79,8 @@ const AppRoutes = () => (
 
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
-    <Link to='class'> ClassListPage</Link>
+    <Link to='/class'> ClassListPage</Link>
+    <Link to='/student'> Student LIST</Link>
 
   </Suspense>
 );
