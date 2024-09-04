@@ -94,11 +94,11 @@ const ClassListPage = () => {
       resizable: false,
       width: 270,
       minWidth: 50,
-      headerAlign: "center", // Center align the header text
+      headerAlign: "center", 
       align: "center",
       renderCell: (params) => (
         <span
-          style={{ cursor: "pointer", color: "blue" }}
+          style={{ cursor: "pointer" }}
           onClick={() => handleTitleClick(params.row.id)}
         >
           {params.value}
@@ -112,7 +112,7 @@ const ClassListPage = () => {
       sortable: false,
       resizable: false,
       width: 300,
-      headerAlign: "center", // Center align the header text
+      headerAlign: "center", 
       align: "center",
     },
     {
