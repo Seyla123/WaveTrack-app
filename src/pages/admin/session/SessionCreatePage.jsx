@@ -103,9 +103,22 @@ function SessionCreatePage() {
     },
   ];
 
+const content = {
+  maxWidth: 1200,
+   mx: "auto", 
+   my: "32px",
+   px: {
+    xs : "24px", 
+    md : "32px"
+   }
+}
+
   const form = {
     maxWidth: "1064px",
-    padding: "32px",
+    padding: {
+      xs : "24px", 
+      md : "32px"
+    },
     border: "1px solid #eee",
     borderRadius: "8px",
     display: "flex",
@@ -133,8 +146,16 @@ function SessionCreatePage() {
     gap: "16px",
     width: 1,
   };
+
+  const button = {
+     width: {
+      md : "170px" ,
+      xs : "100%"
+     } , 
+     
+  }
   return (
-    <Box sx={{ maxWidth: 1200, mx: "auto", my: "32px", px: "32px" }}>
+    <Box sx={content}>
       {/* Header */}
       <Box sx={{ maxWidth: 1064, my: "32px" }}>
         <Typography sx={{ fontSize: "32px", fontWeight: "semibold" }}>
@@ -169,7 +190,7 @@ function SessionCreatePage() {
           </Box>
           {/* Period */}
           <Box sx={textInput}>
-            <Typography sx={{ fontSize: "16px", maxwidth: "524px" }}>
+            <Typography sx={{ fontSize: "16px"}}>
               Class Period
             </Typography>
             <TextField
@@ -231,10 +252,10 @@ function SessionCreatePage() {
 
         {/* Button  */}
         <Stack sx={buttonContainer}>
-          <Button variant="outlined" sx={{ width: "170px" }} color="white">
+          <Button variant="outlined" sx={button} color="white">
             Cancel
           </Button>
-          <Button variant="contained" sx={{ width: "170px" }}>
+          <Button variant="contained" sx={button}>
             Create
           </Button>
         </Stack>
