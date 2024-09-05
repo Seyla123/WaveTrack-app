@@ -1,9 +1,7 @@
-import React from 'react'
-
+import React from "react";
+import { Box } from "@mui/material";
 const DashboardPage = () => {
-  return (
-    <div>DashboardPage</div>
-  )
-}
+    return <Box>Dashboard Page</Box>;
+};
 
-export default DashboardPage
+export default DashboardPage;

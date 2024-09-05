@@ -3,6 +3,20 @@ import { responsiveFontSizes } from "@mui/material/styles";
 
 // Define the theme
 let theme = createTheme({
+    palette: {
+        primary: {
+            main: "#2196F3",
+        },
+        secondary: {
+            main: "#dc004e",
+        },
+    },
+    typography: {
+        fontFamily: "Roboto, sans-serif",
+        // Define other typography settings as needed
+    },
+
+    // Toolpad dashboard layout
     cssVariables: {
         colorSchemeSelector: "data-toolpad-color-scheme",
     },
@@ -15,18 +29,6 @@ let theme = createTheme({
             lg: 1200,
             xl: 1536,
         },
-    },
-    palette: {
-        primary: {
-            main: "#2196F3",
-        },
-        secondary: {
-            main: "#dc004e",
-        },
-    },
-    typography: {
-        fontFamily: "Roboto, sans-serif",
-        // Define other typography settings as needed
     },
 });
 
