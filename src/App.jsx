@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-import { CssBaseline } from "@mui/material";
+import { Box, Button, CssBaseline } from "@mui/material";
 import { DashboardLayout } from "@toolpad/core/DashboardLayout";
 import Layout from "./components/layout/Layout";
 
