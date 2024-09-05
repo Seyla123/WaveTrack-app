@@ -20,7 +20,7 @@ import ChecklistIcon from "@mui/icons-material/Checklist";
 import { Box } from "@mui/system";
 
 const navigation = [
-    { kind: "Menu", title: "Menu" },
+    { kind: "header", title: "Menu" },
     {
         segment: "dashboard",
         title: "Dashboard",
@@ -68,7 +68,7 @@ const navigation = [
             },
         ],
     },
-    { kind: "Menu", title: "General" },
+    { kind: "header", title: "General" },
 
     {
         segment: "setting",
