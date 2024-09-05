@@ -2,7 +2,7 @@ import React, { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Box, Button, CssBaseline } from "@mui/material";
 import { DashboardLayout } from "@toolpad/core/DashboardLayout";
-import Layout from "./components/layout/Layout";
+import SideBar from "./components/layout/SideBar";
 
 // Authentication Pages
 const LoginPage = lazy(() => import("./pages/auth/login/LoginPage"));
@@ -61,9 +61,10 @@ const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 const App = () => {
     return (
-        <Layout>
+        <Box sx={{display: "flex"}}>
+            <SideBar />
             <CssBaseline />
-            <DashboardLayout>
+            <Box component={'main'} width={1} p={2}>
                 <Suspense fallback={<div>Loading...</div>}>
                     <Routes>
                         <Route path="/login" element={<LoginPage />} />
@@ -130,8 +131,8 @@ const App = () => {
                         <Route path="*" element={<NotFoundPage />} />
                     </Routes>
                 </Suspense>
-            </DashboardLayout>
-        </Layout>
+            </Box>
+        </Box>
     );
 };
 
