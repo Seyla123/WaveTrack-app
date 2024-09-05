@@ -114,7 +114,7 @@ function SessionCreatePage() {
     flexDirection: "column",
     gap: {
       xs : "12px", 
-      md : "16px",
+      md : "24px",
     }
   };
 
