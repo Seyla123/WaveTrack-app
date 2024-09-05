@@ -30,9 +30,22 @@ let theme = createTheme({
             xl: 1536,
         },
     },
-    shadows: {
-        1: "rgba(0, 0, 0, 0.04) 0px 3px 5px",
-        2: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
+    components: {
+        MuiButton: {
+            styleOverrides: {
+                root: {
+                    boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
+                },
+            },
+        },
+        MuiCard: {
+            styleOverrides: {
+                root: {
+                    boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
+                },
+            },
+        },
+        // Add other MUI components here
     },
 });
 
