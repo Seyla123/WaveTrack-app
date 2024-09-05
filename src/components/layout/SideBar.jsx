@@ -75,6 +75,14 @@ const drawerWidth = 240;
 
 const SideBar = () => {
     const location = useLocation(); // Get the current location
+    const [openTeacher, setOpenTeacher] = useState(false); // State for Teacher dropdown
+
+    const handleClick = (segment) => {
+        if (segment === "teacher") {
+            setOpenTeacher((prev) => !prev); // Toggle Teacher dropdown
+        }
+        // Add other dropdown toggle logic if needed
+    };
 
     return (
         <>
@@ -92,23 +100,25 @@ const SideBar = () => {
                     <Typography variant='body1'>Menu</Typography>
                     <List>
                         {navigation.map((item) => {
-                            const isActive = location.pathname.includes(item.segment); // Check if the current path includes the segment
+                            const isActive = location.pathname.includes(item.segment);
+                            const hasChildren = item.children && item.children.length > 0;
 
                             return (
                                 <Box key={item.segment}>
                                     <ListItem disablePadding>
-                                        <Link to={`/${item.segment}`} style={{ textDecoration: 'none', width: '100%' }}>
+                                        {hasChildren ? (
                                             <Button 
                                                 startIcon={item.icon} 
                                                 size='large' 
-                                                variant={isActive ? 'contained' : 'outlined'} // Set variant based on active state
+                                                onClick={() => handleClick(item.segment)} // Toggle dropdown
+                                                variant={isActive ? 'contained' : 'outlined'}
                                                 sx={{
                                                     boxShadow: "none", 
                                                     width: 1, 
                                                     display: 'flex', 
                                                     justifyContent: "start",
                                                     '&:hover': {
-                                                        backgroundColor: isActive ? "primary.main" : "transparent", // Change background on hover
+                                                        backgroundColor: isActive ? "primary.main" : "transparent",
                                                     },
                                                     border: isActive ? '' : '1px solid #fff',
                                                     color: isActive ? '' : 'gray'
@@ -116,10 +126,31 @@ const SideBar = () => {
                                             >
                                                 {item.title}
                                             </Button>
-                                        </Link>
+                                        ) : (
+                                            <Link to={`/${item.segment}`} style={{ textDecoration: 'none', width: '100%' }}>
+                                                <Button 
+                                                    startIcon={item.icon} 
+                                                    size='large' 
+                                                    variant={isActive ? 'contained' : 'outlined'}
+                                                    sx={{
+                                                        boxShadow: "none", 
+                                                        width: 1, 
+                                                        display: 'flex', 
+                                                        justifyContent: "start",
+                                                        '&:hover': {
+                                                            backgroundColor: isActive ? "primary.main" : "transparent",
+                                                        },
+                                                        border: isActive ? '' : '1px solid #fff',
+                                                        color: isActive ? '' : 'gray'
+                                                    }}
+                                                >
+                                                    {item.title}
+                                                </Button>
+                                            </Link>
+                                        )}
                                     </ListItem>
-                                    {item.children && (
-                                        <Collapse in={isActive} timeout="auto" unmountOnExit>
+                                    {item.segment === "teacher" && openTeacher && ( // Check if Teacher dropdown is open
+                                        <Collapse in={openTeacher} timeout="auto" unmountOnExit>
                                             <Box sx={{ pl: 2 }}>
                                                 {item.children.map((child) => (
                                                     <ListItem key={child.segment} disablePadding>
