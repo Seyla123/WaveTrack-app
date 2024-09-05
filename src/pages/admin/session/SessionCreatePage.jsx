@@ -28,7 +28,6 @@ function SessionCreatePage() {
   };
 
   // MUI
-
   const teachers = [
     {
       value: "teacher1",
@@ -113,7 +112,10 @@ function SessionCreatePage() {
     },
     display: "flex",
     flexDirection: "column",
-    gap: "16px",
+    gap: {
+      xs : "12px", 
+      md : "16px",
+    }
   };
 
   const form = {
@@ -122,18 +124,21 @@ function SessionCreatePage() {
       xs: "24px",
       md: "32px",
     },
-    border: "1px solid #eee",
     borderRadius: "8px",
     display: "flex",
     flexDirection: "column",
     gap: "16px",
+    boxShadow : 2
   };
 
   const container = {
-    "& .MuiTextField-root": { m: 1, width: 1 },
+    "& .MuiTextField-root": { width: 1 },
     width: "100%",
     display: "grid",
-    gap: "24px",
+    gap: {
+      xs : "12px", 
+      md : "24px"
+    },
     margin: "0 auto",
     gridTemplateColumns: {
       xs: "repeat(1, 1fr)",
@@ -154,6 +159,7 @@ function SessionCreatePage() {
     justifyContent: "flex-end",
     gap: "16px",
     width: 1,
+    my : "16px"
   };
 
   const button = {
@@ -177,7 +183,7 @@ function SessionCreatePage() {
         <Typography sx={{ fontSize: "18px", fontWeight: "bold" }}>
           Session Information
         </Typography>
-        <Divider />
+        <Divider sx={{color : "#797979"}}/>
         <Box component="form" sx={container} noValidate autoComplete="off">
           {/* Teacher */}
           <Box sx={textInput}>
@@ -252,17 +258,16 @@ function SessionCreatePage() {
               ))}
             </TextField>
           </Box>
-
-          {/* Button  */}
-          <Stack sx={buttonContainer}>
-            <Button variant="outlined" sx={button} color="white">
-              Cancel
-            </Button>
-            <Button variant="contained" sx={button}>
-              ADD SESSION
-            </Button>
-          </Stack>
         </Box>
+        {/* Button  */}
+        <Stack sx={buttonContainer}>
+          <Button variant="outlined" sx={button} color="white">
+            Cancel
+          </Button>
+          <Button variant="contained" sx={button}>
+            ADD SESSION
+          </Button>
+        </Stack>
       </Box>
     </Box>
   );
