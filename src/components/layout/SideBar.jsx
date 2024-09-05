@@ -15,7 +15,6 @@ import {
 import theme from "../../styles/theme";
 
 const NAVIGATION = [
-
     {
         kind: "header",
         title: "Menu",
@@ -67,7 +66,6 @@ const NAVIGATION = [
     {
         kind: "header",
         title: "General",
-
     },
     {
         segment: "settings",
@@ -91,10 +89,8 @@ const SideBar = ({ children }) => {
             theme={theme}
             navigation={NAVIGATION}
             branding={{
-                logo: (
-                    <img src="https://mui.com/static/logo.png" alt="MUI logo" />
-                ),
-                title: "MUI",
+                logo: "",
+                title: "WaveTrack",
             }}
         >
             {children}
