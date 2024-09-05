@@ -30,29 +30,22 @@ let theme = createTheme({
             xl: 1536,
         },
     },
-    palette: {
-        primary: {
-            main: "#2196F3",
+    components: {
+        MuiButton: {
+            styleOverrides: {
+                root: {
+                    boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
+                },
+            },
         },
-        secondary: {
-            main: "#dc004e",
+        MuiCard: {
+            styleOverrides: {
+                root: {
+                    boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
+                },
+            },
         },
-    },
-    typography: {
-        fontFamily: "Roboto, sans-serif",
-        // Define other typography settings as needed
-    },
-  
-  typography: {
-    fontFamily: 'Roboto, sans-serif',
-    // Define other typography settings as needed
-    h4:{
-      fontSize: '32px',
-    }
-  },
-    shadows: {
-        1: "rgba(0, 0, 0, 0.04) 0px 3px 5px",
-        2: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
+        // Add other MUI components here
     },
 });
 

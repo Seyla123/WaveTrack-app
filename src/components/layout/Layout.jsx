@@ -3,6 +3,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { AppProvider } from "@toolpad/core/AppProvider";
 import DescriptionIcon from "@mui/icons-material/Description";
 import FolderIcon from "@mui/icons-material/Folder";
+import theme from "../../styles/theme";
+import { Button } from "@mui/material";
 
 const navigation = [
     {
@@ -39,9 +41,34 @@ const navigation = [
     },
 ];
 
-const Layout = ({ children , theme}) => {
+const Layout = ({ children }) => {
     const navigate = useNavigate();
     const location = useLocation();
+
+    const [session, setSession] = React.useState({
+        user: {
+            name: "Doggo",
+            email: "doggo@gmail.com",
+            image: "https://i.pinimg.com/236x/10/18/97/10189726fde11a8182c4ff075bfe094b.jpg",
+        },
+    });
+
+    const authentication = React.useMemo(() => {
+        return {
+            signIn: () => {
+                setSession({
+                    user: {
+                        name: "Doggo",
+                        email: "doggo@gmail.com",
+                        image: "https://i.pinimg.com/236x/10/18/97/10189726fde11a8182c4ff075bfe094b.jpg",
+                    },
+                });
+            },
+            signOut: () => {
+                setSession(null);
+            },
+        };
+    }, []);
 
     const router = React.useMemo(() => {
         return {
@@ -51,8 +78,15 @@ const Layout = ({ children , theme}) => {
         };
     }, [location, navigate]);
     return (
-        <AppProvider navigation={navigation} router={router} theme={theme}>
+        <AppProvider
+            navigation={navigation}
+            router={router}
+            theme={theme}
+            session={session}
+            authentication={authentication}
+        >
             {children}
+            <Button>Chllo</Button>
         </AppProvider>
     );
 };
