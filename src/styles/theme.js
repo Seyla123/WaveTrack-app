@@ -1,20 +1,33 @@
-import { createTheme } from '@mui/material/styles';
-import { responsiveFontSizes } from '@mui/material/styles';
+import { createTheme } from "@mui/material/styles";
+import { responsiveFontSizes } from "@mui/material/styles";
 
 // Define the theme
 let theme = createTheme({
-  palette: {
-    primary: {
-      main: '#2196F3',
+    cssVariables: {
+        colorSchemeSelector: "data-toolpad-color-scheme",
     },
-    secondary: {
-      main: '#dc004e',
+    colorSchemes: { light: true },
+    breakpoints: {
+        values: {
+            xs: 0,
+            sm: 600,
+            md: 600,
+            lg: 1200,
+            xl: 1536,
+        },
     },
-  },
-  typography: {
-    fontFamily: 'Roboto, sans-serif',
-    // Define other typography settings as needed
-  },
+    palette: {
+        primary: {
+            main: "#2196F3",
+        },
+        secondary: {
+            main: "#dc004e",
+        },
+    },
+    typography: {
+        fontFamily: "Roboto, sans-serif",
+        // Define other typography settings as needed
+    },
 });
 
 // Apply responsive font sizes
