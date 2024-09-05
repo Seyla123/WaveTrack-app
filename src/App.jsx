@@ -72,6 +72,7 @@ const App = () => {
                         {/* Protected Routes */}
                         {/* <Route element={<ProtectedRoutes />}> */}
                         <Route path="/dashboard" element={<DashboardPage />} />
+                        <Route path="/" element={<DashboardPage />} />
 
                         {/* Session Routes */}
                         <Route path="/session">
