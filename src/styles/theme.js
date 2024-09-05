@@ -50,6 +50,10 @@ let theme = createTheme({
       fontSize: '32px',
     }
   },
+    shadows: {
+        1: "rgba(0, 0, 0, 0.04) 0px 3px 5px",
+        2: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
+    },
 });
 
 // Apply responsive font sizes

@@ -1,9 +1,8 @@
 import React, { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-import { Box } from "@mui/material";
 import { CssBaseline } from "@mui/material";
 import { DashboardLayout } from "@toolpad/core/DashboardLayout";
-import SideBar from "./components/layout/SideBar";
+import Layout from "./components/layout/Layout";
 
 // Authentication Pages
 const LoginPage = lazy(() => import("./pages/auth/login/LoginPage"));
@@ -62,88 +61,76 @@ const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 const App = () => {
     return (
-        // Toolpad library
-        <SideBar>
+        <Layout>
             <CssBaseline />
-            <Box>
+            <DashboardLayout>
                 <Suspense fallback={<div>Loading...</div>}>
-                    <DashboardLayout>
-                        <Routes>
-                            <Route path="/login" element={<LoginPage />} />
-                            <Route path="/signup" element={<SignupPage />} />
+                    <Routes>
+                        <Route path="/login" element={<LoginPage />} />
+                        <Route path="/signup" element={<SignupPage />} />
 
-                            {/* Protected Routes */}
-                            {/* <Route element={<ProtectedRoutes />}> */}
+                        {/* Protected Routes */}
+                        {/* <Route element={<ProtectedRoutes />}> */}
+                        <Route path="/dashboard" element={<DashboardPage />} />
+
+                        {/* Session Routes */}
+                        <Route path="/session">
+                            <Route path="" element={<SessionListPage />} />
+                            <Route path=":id" element={<SessionDetailPage />} />
                             <Route
-                                path="/dashboard"
-                                element={<DashboardPage />}
+                                path="create"
+                                element={<SessionCreatePage />}
                             />
+                            <Route
+                                path="update/:id"
+                                element={<SessionUpdatePage />}
+                            />
+                        </Route>
 
-                            {/* Session Routes */}
-                            <Route path="/session">
-                                <Route path="" element={<SessionListPage />} />
-                                <Route
-                                    path=":id"
-                                    element={<SessionDetailPage />}
-                                />
-                                <Route
-                                    path="create"
-                                    element={<SessionCreatePage />}
-                                />
-                                <Route
-                                    path="update/:id"
-                                    element={<SessionUpdatePage />}
-                                />
+                        {/* Student Routes */}
+                        <Route path="/student">
+                            <Route path="" element={<StudentListPage />} />
+                            <Route path=":id" element={<StudentDetailPage />} />
+                            <Route
+                                path="create"
+                                element={<StudentCreatePage />}
+                            />
+                            <Route
+                                path="update/:id"
+                                element={<StudentUpdatePage />}
+                            />
+                        </Route>
+
+                            {/* Subject */}
+                            <Route path="/subject">
+                              <Route path=''  element={<SubjectListPage />}/>
+                              <Route path=":id" element={<SubjectDetailPage />} /> 
+                              <Route path="create" element={<SubjectCreatePage />} /> 
+                              <Route path="update/:id" element={<SubjectUpdatePage />} />
                             </Route>
 
-                            {/* Student Routes */}
-                            <Route path="/student">
-                                <Route path="" element={<StudentListPage />} />
-                                <Route
-                                    path=":id"
-                                    element={<StudentDetailPage />}
-                                />
-                                <Route
-                                    path="create"
-                                    element={<StudentCreatePage />}
-                                />
-                                <Route
-                                    path="update/:id"
-                                    element={<StudentUpdatePage />}
-                                />
+                            {/* Class Period */}
+                            <Route path="/class-period">
+                              <Route path='' element={<ClassPeriodListPage/>} />
+                              <Route path=':id' element={<ClassPeriodDetailPage/>} />
+                              <Route path='create' element={<ClassPeriodCreatePage/>} />
+                              <Route path='update/:id' element={<ClassPeriodUpdatePage/>} />
                             </Route>
-
-        {/* Subject */}
-        <Route path="/subject">
-          <Route path=''  element={<SubjectListPage />}/>
-          <Route path=":id" element={<SubjectDetailPage />} /> 
-          <Route path="create" element={<SubjectCreatePage />} /> 
-          <Route path="update/:id" element={<SubjectUpdatePage />} />
-        </Route>
-
-        {/* Class Period */}
-        <Route path="/class-period">
-          <Route path='' element={<ClassPeriodListPage/>} />
-          <Route path=':id' element={<ClassPeriodDetailPage/>} />
-          <Route path='create' element={<ClassPeriodCreatePage/>} />
-          <Route path='update/:id' element={<ClassPeriodUpdatePage/>} />
-        </Route>
-        {/* Teacher Routes */}
-        <Route path="/teacher">
-          <Route path=''  element={<TeacherListPage />}/>
-          <Route path=":id" element={<TeacherDetailPage />} /> 
-          <Route path="create" element={<TeacherCreatePage />} /> 
-          <Route path="update/:id" element={<TeacherUpdatePage />} />
-        </Route>
+                            {/* Teacher Routes */}
+                            <Route path="/teacher">
+                              <Route path=''  element={<TeacherListPage />}/>
+                              <Route path=":id" element={<TeacherDetailPage />} /> 
+                              <Route path="create" element={<TeacherCreatePage />} /> 
+                              <Route path="update/:id" element={<TeacherUpdatePage />} />
+                            </Route>
       
-      {/* </Route> */}
+                           {/* </Route> */}
 
-                            <Route path="*" element={<NotFoundPage />} />
-                        </Routes>
-                    </DashboardLayout>
+                        <Route path="*" element={<NotFoundPage />} />
+                    </Routes>
                 </Suspense>
-            </Box>
-        </SideBar>
+            </DashboardLayout>
+        </Layout>
     );
 };
 
