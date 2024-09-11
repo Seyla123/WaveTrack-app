@@ -389,7 +389,7 @@ const routesConfig = [
         element: <Layout/>,
         children: [
             {
-                path: "",
+                path: "*",
                 element: <NotFoundPage />,
             },
         ]
