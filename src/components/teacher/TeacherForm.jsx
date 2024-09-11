@@ -3,7 +3,7 @@ import { Box, Tabs, Tab } from "@mui/material";
 import TeacherInfo from "./TeacherInfo";
 import AccountInfo from "./AccountInfo";
 
-function FormInfo() {
+function TeacherForm() {
   const [value, setValue] = useState("1");
 
   const handleChange = (event, newValue) => {
@@ -37,7 +37,7 @@ function FormInfo() {
   );
 }
 
-export default FormInfo;
+export default TeacherForm;
 const tabSize = {
   fontWeight: "medium",
   fontSize: {

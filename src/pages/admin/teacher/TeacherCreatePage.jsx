@@ -1,5 +1,5 @@
 import React from "react";
-import FormInfo from '../../../components/teacher/FormInfo';
+import TeacherForm from '../../../components/teacher/TeacherForm';
 import FormComponent from "../../../components/common/FormComponent";
 
 function TeacherCreatePage() {
@@ -8,7 +8,7 @@ function TeacherCreatePage() {
         {/* Header */}
         <FormComponent title={"Teacher Create"} subTitle={"Please Fill Teacher Information"}>
         {/* Tabs */}
-        <FormInfo />
+        <TeacherForm />
       </FormComponent>
       </>
   );
