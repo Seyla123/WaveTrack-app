@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import Layout from '../components/layout/Layout';
 const ProtectedRoutes = ({teacherSite, adminSite}) => {
   // const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-const [isAuthenticated, setIsAuthenticated] = useState(false);
+const [isAuthenticated, setIsAuthenticated] = useState(true);
   return isAuthenticated ? <Layout teacherSite={teacherSite} adminSite={adminSite}><Outlet/></Layout> : <Navigate to="/auth/login" />;
 };
 
